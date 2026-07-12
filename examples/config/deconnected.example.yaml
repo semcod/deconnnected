@@ -1,0 +1,25 @@
+project:
+  root: .
+  graph: .deconnected/graph.json
+  runtime_topology: .testql/topology.json
+
+refactoring:
+  require_clean_git: true
+  keep_worktree_on_failure: true
+  forbidden_operations:
+    - drop_database_table
+    - rewrite_public_api
+    - push_remote
+    - delete_git_history
+
+llm:
+  provider: litellm
+  model: openrouter/deepseek/deepseek-chat
+  max_output_tokens: 8000
+  max_cost_usd: 3.0
+
+validation:
+  commands:
+    - [python, -m, compileall, src]
+    - [pytest, -q]
+    - [git, diff, --check]
