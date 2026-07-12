@@ -26,6 +26,11 @@ def extract_sql_references(sql: str, dialect: str | None = None) -> list[SqlRefe
         statements = []
 
     for statement in statements:
+        # sqlglot.parse() inserts None for statement segments it can't fully
+        # parse (e.g. a mixed-dialect or truncated fragment) instead of
+        # raising, so a naive loop crashes on the first unparseable segment.
+        if statement is None:
+            continue
         operation = _operation(statement)
         for table in statement.find_all(exp.Table):
             name = table.name
