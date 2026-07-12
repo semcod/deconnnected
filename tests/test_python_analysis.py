@@ -19,3 +19,15 @@ def get_order(order_id: int):
     assert ("GET", "/api/orders/{order_id}", 9) in facts.routes
     assert any(name == "orders" for name, _ in facts.table_names)
     assert facts.sql_literals
+
+
+def test_byte_string_assignment_does_not_crash():
+    """evaluated_value is `bytes` for b"..."/rb"..." literals; regressions here
+    crashed the whole scan with TypeError: cannot use a string pattern on a
+    bytes-like object (visit_Assign -> _SQLISH.search)."""
+    facts = analyze_python('''
+MAGIC = b"SELECT * FROM users"
+OTHER = rb"INSERT INTO orders"
+''')
+    assert facts.sql_literals == []
+

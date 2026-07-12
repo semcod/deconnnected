@@ -78,9 +78,12 @@ def analyze_python(text: str) -> PythonFacts:
 def _simple_string(node: cst.CSTNode) -> str | None:
     if isinstance(node, cst.SimpleString):
         try:
-            return node.evaluated_value
+            value = node.evaluated_value
         except Exception:
             return None
+        # evaluated_value is `bytes` for byte-string literals (b"...", rb"...");
+        # callers assume a real str (regex search, table-name comparisons).
+        return value if isinstance(value, str) else None
     return None
 
 
