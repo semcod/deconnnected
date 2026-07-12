@@ -13,6 +13,23 @@ API_PATTERNS = [
 ]
 SOURCE_SUFFIXES = {".py", ".js", ".jsx", ".ts", ".tsx", ".sql", ".php", ".go", ".java", ".kt"}
 IGNORE = {".git", "node_modules", ".venv", "venv", "dist", "build", "__pycache__", ".deconnected"}
+# Prefix/substring patterns for directory names IGNORE's exact-match set misses,
+# e.g. ".venv-test" (a second venv alongside ".venv") or vendored dependency
+# trees inside any venv (site-packages, *.egg-info). Left unfiltered, a scan
+# can spend nearly all of its time walking third-party packages instead of
+# the application's own source.
+IGNORE_PREFIXES = (".venv", "venv-", "site-packages")
+IGNORE_SUFFIXES = (".egg-info",)
+
+
+def _is_ignored_part(part: str) -> bool:
+    if part in IGNORE:
+        return True
+    if part.startswith(IGNORE_PREFIXES):
+        return True
+    if part.endswith(IGNORE_SUFFIXES):
+        return True
+    return False
 
 
 def _kind(path: Path) -> str:
@@ -35,7 +52,7 @@ def scan_source(root: Path) -> AppGraph:
     for path in root.rglob("*"):
         if not path.is_file() or path.suffix.lower() not in SOURCE_SUFFIXES:
             continue
-        if any(part in IGNORE for part in path.parts):
+        if any(_is_ignored_part(part) for part in path.parts):
             continue
         rel = path.relative_to(root).as_posix()
         file_id = f"file:{rel}"
