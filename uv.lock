@@ -1000,7 +1000,7 @@ ecosystem = [
     { name = "code2logic" },
     { name = "redup" },
     { name = "regix" },
-    { name = "testql" },
+    { name = "testql", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
     { name = "toonic" },
     { name = "vallm", version = "0.1.91", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "vallm", version = "0.1.94", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
@@ -1012,7 +1012,7 @@ llm = [
     { name = "litellm" },
 ]
 testql = [
-    { name = "testql" },
+    { name = "testql", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
 ]
 
 [package.metadata]
@@ -1040,8 +1040,8 @@ requires-dist = [
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.5" },
     { name = "sqlalchemy", specifier = ">=2.0" },
     { name = "sqlglot", specifier = ">=25.0" },
-    { name = "testql", marker = "extra == 'ecosystem'", specifier = ">=1.2.60" },
-    { name = "testql", marker = "extra == 'testql'", specifier = ">=1.2.60" },
+    { name = "testql", marker = "python_full_version >= '3.11' and python_full_version < '3.14' and extra == 'ecosystem'", specifier = ">=1.2.63" },
+    { name = "testql", marker = "python_full_version >= '3.11' and python_full_version < '3.14' and extra == 'testql'", specifier = ">=1.2.63" },
     { name = "toonic", marker = "extra == 'ecosystem'" },
     { name = "tree-sitter", marker = "extra == 'analysis'", specifier = ">=0.22" },
     { name = "vallm", marker = "extra == 'ecosystem'" },
@@ -1116,11 +1116,11 @@ name = "fastapi"
 version = "0.139.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "annotated-doc" },
-    { name = "pydantic" },
-    { name = "starlette" },
-    { name = "typing-extensions" },
-    { name = "typing-inspection" },
+    { name = "annotated-doc", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
+    { name = "pydantic", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
+    { name = "starlette", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
+    { name = "typing-extensions", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
+    { name = "typing-inspection", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/d3/af/a5f50ccfa659ec1802cb4ca842c23f06d906a8cc9aef6016a2caeea3d4ed/fastapi-0.139.0.tar.gz", hash = "sha256:99ab7b2d92223c76d6cf10757ab3f89d45b38267fc20b2a136cf02f6beac3145", size = 423016, upload-time = "2026-07-01T16:35:33.436Z" }
 wheels = [
@@ -4691,8 +4691,8 @@ name = "starlette"
 version = "1.3.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "anyio" },
-    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
+    { name = "anyio", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
+    { name = "typing-extensions", marker = "python_full_version >= '3.11' and python_full_version < '3.13'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/eb/e3/7c1dc7381d9f8ab7d854328ebfa884e62cb3f3d8549ddfd37c7814f42afa/starlette-1.3.1.tar.gz", hash = "sha256:05d0213193f2fbaae60e2ecb593b4add4262ad4e46536b54abe36f11a71724e0", size = 2703240, upload-time = "2026-06-12T09:23:11.602Z" }
 wheels = [
@@ -4701,23 +4701,24 @@ wheels = [
 
 [[package]]
 name = "testql"
-version = "1.2.60"
+version = "1.2.63"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "click" },
-    { name = "costs" },
-    { name = "fastapi" },
-    { name = "goal" },
-    { name = "httpx" },
-    { name = "pfix" },
-    { name = "pytest-cov" },
-    { name = "pyyaml" },
-    { name = "rich" },
-    { name = "websockets" },
+    { name = "click", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
+    { name = "costs", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
+    { name = "fastapi", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
+    { name = "goal", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
+    { name = "httpx", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
+    { name = "pfix", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
+    { name = "playwright", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
+    { name = "pytest-cov", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
+    { name = "pyyaml", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
+    { name = "rich", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
+    { name = "websockets", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/22/f4/11f8a45d8e5bc8136a3f47c05fd33bf93c0c07ea350f790d37b8630041f9/testql-1.2.60.tar.gz", hash = "sha256:4d2f11decf51108c14c30115268ecf7dceb0de09a182caea1fbd605503234cb9", size = 417897, upload-time = "2026-06-09T14:00:25.618Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/c2/ea/02574e9adcc5999e2e8d4f3adcb0bfe8385bf7d62e10404606e3f4beaca5/testql-1.2.63.tar.gz", hash = "sha256:ddb31d27c9713c5cbc53c4f0b185d6412acd78268fbf140a90454709c4cd0701", size = 406262, upload-time = "2026-07-20T07:47:21.852Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0b/26/b6aa315446fe6b6eca2d2a228d5dfeeff628894180ac0a231f84a89c9190/testql-1.2.60-py3-none-any.whl", hash = "sha256:c93af25708f5dface728ce08dee722ad3d28b54cd1bc044e48b6db4a821c9a7e", size = 413854, upload-time = "2026-06-09T14:00:23.446Z" },
+    { url = "https://files.pythonhosted.org/packages/55/e0/d87c7912c7170af009af944d2105016f24953feb9d72c13518d9d35162f6/testql-1.2.63-py3-none-any.whl", hash = "sha256:3876af6538fe727cb63fa3174b1e6d6bec04d285c8e1effab6e3f54dbe9c4cef", size = 395903, upload-time = "2026-07-20T07:47:19.839Z" },
 ]
 
 [[package]]
