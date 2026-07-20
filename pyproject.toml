@@ -22,10 +22,10 @@ dependencies = [
 
 [project.optional-dependencies]
 gui = ["playwright>=1.45"]
-testql = ["testql>=1.2.63; python_version >= '3.11' and python_version < '3.14'"]
+testql = ["testql>=1.2.64; python_version >= '3.11' and python_version < '3.14'"]
 analysis = ["tree-sitter>=0.22", "rapidfuzz>=3.9"]
 ecosystem = [
-  "testql>=1.2.63; python_version >= '3.11' and python_version < '3.14'",
+  "testql>=1.2.64; python_version >= '3.11' and python_version < '3.14'",
   "code2llm>=0.5.173",
   "redup>=0.4.30",
   "regix",
