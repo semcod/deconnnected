@@ -6,3 +6,6 @@
 .idea/vcs.xml
 .env
 .env.local
+
+__pycache__/
+*.pyc
