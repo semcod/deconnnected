@@ -38,7 +38,6 @@ agent = ["litellm>=1.80"]
 dev = ["pytest>=8.2", "pytest-cov>=5.0", "ruff>=0.5", "mypy>=1.10",
     "goal>=2.1.0",
     "costs>=0.1.53",
-    "pfix>=0.1.60",
 ]
 
 [project.scripts]
@@ -51,22 +50,6 @@ addopts = "-q"
 [tool.ruff]
 line-length = 100
 target-version = "py310"
-
-[tool.pfix]
-# Self-healing Python configuration
-model = "openrouter/qwen/qwen3-coder-next"
-auto_apply = true
-auto_install_deps = true
-auto_restart = false
-max_retries = 3
-create_backups = false
-git_auto_commit = false
-
-[tool.pfix.runtime_todo]
-enabled = true
-todo_file = "TODO.md"
-min_severity = "low"
-deduplicate = true
 
 [tool.costs]
 # AI Cost tracking configuration
