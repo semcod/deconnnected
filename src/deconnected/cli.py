@@ -17,6 +17,15 @@ console = Console()
 
 @click.group()
 def cli():
+    try:
+        from .autoupdate import check_for_updates
+        check_for_updates("deconnected")
+    except Exception:
+        try:
+            from deconnected.autoupdate import check_for_updates
+            check_for_updates("deconnected")
+        except Exception:
+            pass
     """Map cross-layer dependencies and plan safe extractions."""
 
 @cli.command()
